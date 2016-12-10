@@ -8,19 +8,10 @@ public class MessageClient{
 
     private int port;
     private String ip;
-    private static volatile boolean stopClient = false;
 
-    public MessageClient(String ip, int port){
-        this.ip = ip;
+    public MessageClient(int port, String ip) {
         this.port = port;
-    }
-
-    public void setStopClient(boolean stopClient) {
-        this.stopClient = stopClient;
-    }
-
-    public boolean isStopClient() {
-        return stopClient;
+        this.ip = ip;
     }
 
     public void start() {
@@ -33,20 +24,33 @@ public class MessageClient{
             DataOutputStream out = new DataOutputStream(outStream);
             BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
             String line = null;
-            while (!stopClient) {
+            System.out.println("Client started:");
+            while (true) {
                 line = keyboard.readLine();
                 out.writeUTF(line);
-                out.flush();
-                line = in.readUTF();
-                System.out.println("Server answer : " + line);
+//                System.out.println(text);
+//                if (text.length() != 0) {
+//                    System.out.println(text);
+//                    out.writeUTF(text);
+                    out.flush();
+                    line = in.readUTF();
+//                }
+//                text = "";
+//                System.out.println("Answer: " + answer);
+                if (line.length() != 0){
+                    System.out.println("Server answer : " + line);
+                }
             }
-            if (stopClient) System.out.println("Client was stopped");
+//            System.out.println("Client was stopped");
         } catch (Exception x) {
+            System.out.println("Error ->" + x.getMessage());
             x.printStackTrace();
         }
     }
 
-//    public boolean sendMessage(String messageOwner, String message) {
-//        return false;
-//    }
+    public static void main(String[] args) {
+        MessageClient client = new MessageClient(6666, "127.0.0.1");
+        client.start();
+    }
+
 }
