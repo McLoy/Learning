@@ -7,7 +7,7 @@ public class Client {
     public static void main(String[] ar) {
         int serverPort = 6666;
         String address = "127.0.0.1"; // это IP-адрес компьютера, где исполняется наша серверная программа.
-        //String address = "192.168.0.102"; //102 - tel, 106 comp
+//        String address = "192.168.0.102"; //102 - tel, 106 comp
         try {
             InetAddress ipAddress = InetAddress.getByName(address);
             Socket socket = new Socket(ipAddress, serverPort);
