@@ -1,86 +1,143 @@
 package ua.vtkachenko;
 
-import com.sun.xml.internal.bind.annotation.OverrideAnnotationOf;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 public class MessageServer {
 
-    private int port;
-    private DataInputStream in;
-    private DataOutputStream out;
+    private int port = 6666;
+    private List<Connection> connections =
+            Collections.synchronizedList(new ArrayList<Connection>());
+    private ServerSocket server;
 
-    public MessageServer(int port) {
-        this.port = port;
-    }
-
-    public void init() {
+    public MessageServer() {
         try {
-            ServerSocket server = new ServerSocket(port);
-            Socket serverSocket = server.accept();
-            OutputStream outStream = serverSocket.getOutputStream();
-            InputStream inStream = serverSocket.getInputStream();
-            in = new DataInputStream(inStream);
-            out = new DataOutputStream(outStream);
-//            String line = null;
-//            System.out.println("Server was stopped");
+            server = new ServerSocket(port);
+            int count = 0;
+            System.out.println("Server wait for clients");
+            while (true) {
+                Socket socket = server.accept();
+                count++;
+                System.out.println("Client " + count + " connected");
+                Connection con = new Connection(socket);
+                connections.add(con);
+                con.start();
+            }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            closeAll();
         }
     }
 
-    public DataInputStream getIn() {
-        return in;
+    private void closeAll() {
+        try {
+            server.close();
+            synchronized(connections) {
+                Iterator<Connection> iter = connections.iterator();
+                while(iter.hasNext()) {
+                    ((Connection) iter.next()).close();
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Connections wasn't closed");
+        }
     }
 
-    public DataOutputStream getOut() {
-        return out;
+    private class Connection extends Thread {
+        private BufferedReader in;
+        private PrintWriter out;
+        private Socket socket;
+
+        private String name = "";
+
+        public Connection(Socket socket) {
+            this.socket = socket;
+
+            try {
+                in = new BufferedReader(new InputStreamReader(
+                        socket.getInputStream()));
+                out = new PrintWriter(socket.getOutputStream(), true);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                close();
+            }
+        }
+
+        @Override
+        public void run() {
+            try {
+                name = in.readLine();
+                synchronized(connections) {
+                    Iterator<Connection> iter = connections.iterator();
+                    while(iter.hasNext()) {
+                        ((Connection) iter.next()).out.println(name + " join conversation");
+                    }
+                }
+
+                String str = "";
+                while (true) {
+                    str = in.readLine();
+                    if(str.equals("exit")) break;
+
+                    synchronized(connections) {
+                        Iterator<Connection> iter = connections.iterator();
+                        boolean notPrivateMessage = true;
+                        while(iter.hasNext()) {
+                            Connection currConnection = (Connection) iter.next();
+                            if (str.contains(currConnection.name + ":")){
+                                currConnection.out.println(name + ": " + str.replace(currConnection.name + ": ", "") + "(private message)");
+                                notPrivateMessage = false;
+                            } else {
+                                if (! currConnection.name.equals(name) && notPrivateMessage){
+                                    currConnection.out.println(name + ": " + str);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                synchronized(connections) {
+                    Iterator<Connection> iter = connections.iterator();
+                    while(iter.hasNext()) {
+                        ((Connection) iter.next()).out.println(name + " left conversation");
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                close();
+            }
+        }
+
+        public void close() {
+            try {
+                in.close();
+                out.close();
+                socket.close();
+
+                connections.remove(this);
+                if (connections.size() == 0) {
+                    MessageServer.this.closeAll();
+                    System.exit(0);
+                }
+            } catch (Exception e) {
+                System.err.println("Connections wasn't closed");
+            }
+        }
     }
 
     public static void main(String[] args) {
-
-        MessageServer server = new MessageServer(6666);
-        server.init();
-        DataInputStream in = server.getIn();
-        DataOutputStream out = server.getOut();
-        Scanner scan = new Scanner(System.in);
-        boolean exit = false;
-        String line, to;
-        List<String> users = new ArrayList<String>();
-        System.out.println("Server started:");
-        int answerCounts = 1;
-        while (!exit){
-            try {
-                line = in.readUTF();
-                if (line.length() != 0 /*&& line.contains(":")*/){
-//                    to = line.substring(0, line.indexOf(":") - 1);
-//                    if (users.contains(to)){
-                        //send message
-
-                    if (line.equals("exit")){
-                        exit = true;
-                    } else {
-                        out.writeUTF("Hello from server " + answerCounts++);
-                    out.flush();
-                    }
-//                    }
-                }
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
-
-//            command = scan.nextLine();
-//            if (command.equals("exit")){
-//                exit = true;
-//            } else {
-//                System.out.println("Command '" + command + "' not found, try 'exit' for exit");
-//            }
-        }
-        System.out.println("Message server stopped");
+        new MessageServer();
     }
 }
+

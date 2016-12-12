@@ -1,56 +1,82 @@
 package ua.vtkachenko;
 
-import java.io.*;
-import java.net.InetAddress;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Scanner;
 
-public class MessageClient{
+public class MessageClient {
+    private BufferedReader in;
+    private PrintWriter out;
+    private Socket socket;
 
-    private int port;
-    private String ip;
+    private int port = 6666;
+    private String ip = "127.0.0.1";
 
-    public MessageClient(int port, String ip) {
-        this.port = port;
-        this.ip = ip;
+    public MessageClient() {
+        Scanner scan = new Scanner(System.in);
+
+        try {
+            socket = new Socket(ip, port);
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
+
+            System.out.print("Enter your name:");
+            out.println(scan.nextLine());
+
+            Resend resend = new Resend();
+            resend.start();
+
+            String str = "";
+            while (!str.equals("exit")) {
+                str = scan.nextLine();
+                out.println(str);
+            }
+            resend.setStop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close();
+        }
     }
 
-    public void start() {
+    private void close() {
         try {
-            InetAddress ipAddress = InetAddress.getByName(ip);
-            Socket socket = new Socket(ipAddress, port);
-            InputStream inStream = socket.getInputStream();
-            OutputStream outStream = socket.getOutputStream();
-            DataInputStream in = new DataInputStream(inStream);
-            DataOutputStream out = new DataOutputStream(outStream);
-            BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
-            String line = null;
-            System.out.println("Client started:");
-            while (true) {
-                line = keyboard.readLine();
-                out.writeUTF(line);
-//                System.out.println(text);
-//                if (text.length() != 0) {
-//                    System.out.println(text);
-//                    out.writeUTF(text);
-                    out.flush();
-                    line = in.readUTF();
-//                }
-//                text = "";
-//                System.out.println("Answer: " + answer);
-                if (line.length() != 0){
-                    System.out.println("Server answer : " + line);
+            in.close();
+            out.close();
+            socket.close();
+        } catch (Exception e) {
+            System.err.println("Потоки не были закрыты!");
+        }
+    }
+
+    private class Resend extends Thread {
+
+        private boolean stoped;
+
+        public void setStop() {
+            stoped = true;
+        }
+
+        @Override
+        public void run() {
+            try {
+                while (!stoped) {
+                    String str = in.readLine();
+                    System.out.println(str);
                 }
+            } catch (IOException e) {
+                System.err.println("Connection error");
+                e.printStackTrace();
             }
-//            System.out.println("Client was stopped");
-        } catch (Exception x) {
-            System.out.println("Error ->" + x.getMessage());
-            x.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
-        MessageClient client = new MessageClient(6666, "127.0.0.1");
-        client.start();
+        new MessageClient();
     }
-
 }
+
+
