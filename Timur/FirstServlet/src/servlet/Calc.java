@@ -6,8 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Calc extends HttpServlet {
+
+    private List<String> memorySession;
 
     private String calc(Integer a1, Integer a2, String operation) {
         String result = "";
@@ -15,7 +19,7 @@ public class Calc extends HttpServlet {
             case "add":
                 result = "" + a1 + " + " + a2 + " = " + (a1 + a2);
                 break;
-            case "extract":
+            case "subtract":
                 result = "" + a1 + " - " + a2 + " = " + (a1 - a2);
                 break;
             case "multiply":
@@ -41,11 +45,12 @@ public class Calc extends HttpServlet {
         Integer param1 = null;
         Integer param2 = null;
         String operation = null;
+        String res;
         if (request.getParameterNames().hasMoreElements()) {
             String input1 = request.getParameter("p1");
             String input2 = request.getParameter("p2");
-            param1 = input1 == null ? null : Integer.parseInt(input1);
-            param2 = input2 == null ? null : Integer.parseInt(input2);
+            param1 = (input1 == null || (input1 != null && input1.isEmpty())) ? null : Integer.parseInt(input1);
+            param2 = (input2 == null || (input2 != null && input2.isEmpty())) ? null : Integer.parseInt(input2);
             operation = request.getParameter("op");
         } else filledParams = false;
 
@@ -59,13 +64,22 @@ public class Calc extends HttpServlet {
             out.print("<body>");
             out.print("<h1>Calculator</h1>");
             if (!filledParams) {
-                out.print("<h3>Try input parameters p1(first param), p2(second param), op(add, multiply, extract or divide)</h3>");
+                out.print("<h3>Try input parameters p1(first param), p2(second param), op(add, multiply, subtract or divide)</h3>");
             } else {
                 if (param1 == null|| param2 == null || operation == null || (operation != null && operation.isEmpty())){
-                    out.print("<h2>Wrong request parameters, try p1(first param), p2(second param), op(add, multiply, extract or divide)</h2>");
+                    out.print("<h2>Wrong request parameters, try p1(first param), p2(second param), op(add, multiply, subtract or divide)</h2>");
                 } else {
-                    out.print("<h3>" + calc(param1, param2, operation) + "</h3>");
+                    res = calc(param1, param2, operation);
+                    memorySession = (ArrayList)request.getSession().getAttribute("memory");
+                    if (memorySession == null){
+                        memorySession = new ArrayList<>();
+                    }
+                    memorySession.add(res);
+                    request.getSession().setAttribute("memory", memorySession);
                 }
+            }
+            for (String s :memorySession) {
+                out.print("<h3>" + s + "</h3>");
             }
             out.print("</body>");
             out.print("</head>");
