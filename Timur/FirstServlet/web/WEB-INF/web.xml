@@ -35,6 +35,15 @@
         <url-pattern>/css</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Calculator</servlet-name>
+        <servlet-class>servlet.Calc</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Calculator</servlet-name>
+        <url-pattern>/calc</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

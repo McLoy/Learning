@@ -11,10 +11,14 @@ import java.util.Enumeration;
 
 public class TestServlet extends HttpServlet {
 
+    private int countOfVisists;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //        String param1 = request.getParameter("p1");
+        countOfVisists++;
+
+        request.getSession().setAttribute("count", countOfVisists);
 
         Enumeration en = request.getParameterNames();
 
@@ -36,6 +40,7 @@ public class TestServlet extends HttpServlet {
                 String param = en.nextElement().toString();
                 out.print("<h2>Param " + param + " = " + request.getParameter(param) + "</h2>");
             }
+            out.print("<h2>Count of visits: " + request.getSession().getAttribute("count") + "</h2>");
 //            out.print("<h3>Parametr = " + param1 + "</h3>");
             out.print("<body>");
             out.print("</html>");
