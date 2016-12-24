@@ -71,7 +71,7 @@ public class Calc extends HttpServlet {
                 } else {
                     res = calc(param1, param2, operation);
                     if (request.getSession().isNew()){
-                        memorySession.clear();
+                        memorySession = new ArrayList<>();
                     } else {
                         memorySession = (ArrayList)request.getSession().getAttribute("memory");
                     }
