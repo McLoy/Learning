@@ -70,12 +70,15 @@ public class Calc extends HttpServlet {
                     out.print("<h2>Wrong request parameters, try p1(first param), p2(second param), op(add, multiply, subtract or divide)</h2>");
                 } else {
                     res = calc(param1, param2, operation);
-                    memorySession = (ArrayList)request.getSession().getAttribute("memory");
-                    if (memorySession == null){
-                        memorySession = new ArrayList<>();
+                    if (request.getSession().isNew()){
+                        memorySession.clear();
+                    } else {
+                        memorySession = (ArrayList)request.getSession().getAttribute("memory");
                     }
-                    memorySession.add(res);
-                    request.getSession().setAttribute("memory", memorySession);
+                    if (memorySession instanceof ArrayList){
+                        memorySession.add(res);
+                        request.getSession().setAttribute("memory", memorySession);
+                    }
                 }
             }
             for (String s :memorySession) {
