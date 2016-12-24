@@ -7,13 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 public class TestServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String param1 = request.getParameter("p1");
+//        String param1 = request.getParameter("p1");
+
+        Enumeration en = request.getParameterNames();
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -29,7 +32,11 @@ public class TestServlet extends HttpServlet {
             out.print("<br>");
             out.print("<h2>My dog</h2>");
             out.print("<img src='" + request.getContextPath() + "/images/dog.jpg'>");
-            out.print("<h3>Parametr = " + param1 + "</h3>");
+            while (en.hasMoreElements()){
+                String param = en.nextElement().toString();
+                out.print("<h2>Param " + param + " = " + request.getParameter(param) + "</h2>");
+            }
+//            out.print("<h3>Parametr = " + param1 + "</h3>");
             out.print("<body>");
             out.print("</html>");
 
