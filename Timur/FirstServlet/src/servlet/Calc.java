@@ -26,7 +26,7 @@ public class Calc extends HttpServlet {
                 result = "" + a1 + " * " + a2 + " = " + (a1 * a2);
                 break;
             case "divide": {
-                if (!a2.equals(0)){
+                if (!a2.equals(0)) {
                     result = "" + a1 + " / " + a2 + " = " + (a1.doubleValue() / a2.doubleValue());
                 } else {
                     result = "Division by zero";
@@ -66,22 +66,22 @@ public class Calc extends HttpServlet {
             if (!filledParams) {
                 out.print("<h3>Try input parameters p1(first param), p2(second param), op(add, multiply, subtract or divide)</h3>");
             } else {
-                if (param1 == null|| param2 == null || operation == null || (operation != null && operation.isEmpty())){
+                if (param1 == null || param2 == null || operation == null || (operation != null && operation.isEmpty())) {
                     out.print("<h2>Wrong request parameters, try p1(first param), p2(second param), op(add, multiply, subtract or divide)</h2>");
                 } else {
                     res = calc(param1, param2, operation);
-                    if (request.getSession().isNew()){
+                    if (request.getSession().isNew()) {
                         memorySession = new ArrayList<>();
                     } else {
-                        memorySession = (ArrayList)request.getSession().getAttribute("memory");
+                        memorySession = (ArrayList) request.getSession().getAttribute("memory");
                     }
-                    if (memorySession instanceof ArrayList){
+                    if (memorySession instanceof ArrayList) {
                         memorySession.add(res);
                         request.getSession().setAttribute("memory", memorySession);
                     }
                 }
             }
-            for (String s :memorySession) {
+            for (String s : memorySession) {
                 out.print("<h3>" + s + "</h3>");
             }
             out.print("</body>");
