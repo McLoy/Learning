@@ -1,4 +1,4 @@
-package ua.vtkachenko.proselyte.creational.factory;
+package ua.vtkachenko.proselyte.origin.creational.factory;
 
 public class CppDeveloper implements Developer {
     @Override
