@@ -8,6 +8,8 @@
   <modules>
     <module>Sockets</module>
     <module>SimpleSocketChat</module>
+    <module>Billing</module>
+    <module>Billing</module>
   </modules>
   <packaging>pom</packaging>
 
