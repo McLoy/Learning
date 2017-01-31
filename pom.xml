@@ -8,8 +8,7 @@
   <modules>
     <module>Sockets</module>
     <module>SimpleSocketChat</module>
-    <module>Billing</module>
-    <module>Billing</module>
+    <module>Spring4WebMVCMaven</module>
   </modules>
   <packaging>pom</packaging>
 
