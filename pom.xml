@@ -9,6 +9,7 @@
     <module>Sockets</module>
     <module>SimpleSocketChat</module>
     <module>Spring4WebMVCMaven</module>
+    <module>SpringMVC-sampleApp</module>
   </modules>
   <packaging>pom</packaging>
 
