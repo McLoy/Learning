@@ -12,7 +12,5 @@ public class JavaDeveloperRunner {
         while (iterator.hasNext()){
             System.out.println(iterator.next().toString() + " ");
         }
-
-
     }
 }
