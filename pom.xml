@@ -13,6 +13,7 @@
     <module>Gradle_example</module>
     <module>spring_example</module>
     <module>spring_example</module>
+    <module>RegistrationAndActivationForm</module>
   </modules>
   <packaging>pom</packaging>
 
