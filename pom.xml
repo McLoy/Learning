@@ -10,6 +10,7 @@
     <module>SimpleSocketChat</module>
     <module>Spring4WebMVCMaven</module>
     <module>SpringMVC-sampleApp</module>
+    <module>Gradle_example</module>
   </modules>
   <packaging>pom</packaging>
 
