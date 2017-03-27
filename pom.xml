@@ -11,6 +11,8 @@
     <module>Spring4WebMVCMaven</module>
     <module>SpringMVC-sampleApp</module>
     <module>Gradle_example</module>
+    <module>spring_example</module>
+    <module>spring_example</module>
   </modules>
   <packaging>pom</packaging>
 
