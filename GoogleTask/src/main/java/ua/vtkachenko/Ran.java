@@ -1,16 +1,13 @@
 package ua.vtkachenko;
 
 public class Ran {
-    private int max;
     private int last;
-
-    public Ran(int max){
-        this.max = max;
-        last = (int) (System.currentTimeMillis() % max);
-    }
-
     public int nextInt(){
-        last = (last * 32719 + 3) % 32749;
-        return last % max;
+        last = (int) (System.nanoTime()) + 813;
+        last = (last - (last/1000)*1000);
+        if (last < 0){
+            last *= -1;
+        }
+        return last;
     }
 }

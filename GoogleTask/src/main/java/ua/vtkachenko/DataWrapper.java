@@ -1,7 +1,5 @@
 package ua.vtkachenko;
 
-import java.util.Random;
-
 public class DataWrapper implements Wrapper{
 
     private int size;
@@ -38,17 +36,24 @@ public class DataWrapper implements Wrapper{
     private int[] randomInitialization(){
         array = new int[capacity];
         for (int i = 0; i < capacity; i++) {
-            array[i] = new Random(10).nextInt();
+            array[i] = new Ran().nextInt();
         }
         return this.array;
     }
 
     public static void main(String[] args) {
-        int N = 15;
-        int K = new Random().nextInt(10);
+        int N = 1000;
+        Ran r = new Ran();
+        int K;
+
+        do {
+            K = r.nextInt();
+        } while (K > N || K <= 0);
+
         int[] arrK = new int[K];
+
         for (int i = 0; i < arrK.length; i++) {
-            arrK[i] = new Random().nextInt(10);
+            arrK[i] = r.nextInt();
         }
         DataWrapper dw = new DataWrapper(arrK, N);
         for (int i = 0; i < dw.size(); i++) {
