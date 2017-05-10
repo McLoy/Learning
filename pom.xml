@@ -16,6 +16,7 @@
     <module>RegistrationAndActivationForm</module>
     <module>RegistrationLoginExample</module>
     <module>GoogleTask</module>
+    <module>Quizful</module>
   </modules>
   <packaging>pom</packaging>
 
