@@ -17,6 +17,7 @@
     <module>RegistrationLoginExample</module>
     <module>GoogleTask</module>
     <module>Quizful</module>
+    <module>MyApp1</module>
   </modules>
   <packaging>pom</packaging>
 
