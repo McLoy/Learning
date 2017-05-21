@@ -8,16 +8,14 @@
   <modules>
     <module>Sockets</module>
     <module>SimpleSocketChat</module>
-    <module>Spring4WebMVCMaven</module>
     <module>SpringMVC-sampleApp</module>
-    <module>Gradle_example</module>
-    <module>spring_example</module>
-    <module>spring_example</module>
     <module>RegistrationAndActivationForm</module>
     <module>RegistrationLoginExample</module>
     <module>GoogleTask</module>
     <module>Quizful</module>
-    <module>MyApp1</module>
+    <module>spring3-mvc-maven-xml-hello-world</module>
+    <module>SpringMVCExample</module>
+    <module>LastMVC</module>
   </modules>
   <packaging>pom</packaging>
 
