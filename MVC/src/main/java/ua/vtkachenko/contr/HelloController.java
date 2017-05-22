@@ -1,14 +1,15 @@
-package ua.vtkachenko.controller;
+package ua.vtkachenko.contr;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class BingoController {
+public class HelloController{
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String start(){
-        return "get";
+        return "page";
     }
+
 }

@@ -16,6 +16,8 @@
     <module>spring3-mvc-maven-xml-hello-world</module>
     <module>SpringMVCExample</module>
     <module>LastMVC</module>
+    <module>HabrMVCEx</module>
+    <module>MVC</module>
   </modules>
   <packaging>pom</packaging>
 
