@@ -1,4 +1,4 @@
-package ua.vtkachenko.proselyte.origin.decorator;
+package ua.vtkachenko.proselyte.origin.structural.decorator;
 
 public class SeniorJavaDeveloper extends DeveloperDecorator {
     public SeniorJavaDeveloper(Developer developer) {

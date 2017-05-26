@@ -1,4 +1,4 @@
-package ua.vtkachenko.proselyte.origin.decorator;
+package ua.vtkachenko.proselyte.origin.structural.decorator;
 
 public class JavaTeamLead extends DeveloperDecorator {
     public JavaTeamLead(Developer developer) {

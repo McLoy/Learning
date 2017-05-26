@@ -1,4 +1,4 @@
-package ua.vtkachenko.proselyte.origin.decorator;
+package ua.vtkachenko.proselyte.origin.structural.decorator;
 
 public class JavaDeveloper implements Developer {
     @Override

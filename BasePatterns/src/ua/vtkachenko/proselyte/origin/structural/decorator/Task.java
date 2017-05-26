@@ -1,4 +1,4 @@
-package ua.vtkachenko.proselyte.origin.decorator;
+package ua.vtkachenko.proselyte.origin.structural.decorator;
 
 public class Task {
     public static void main(String[] args) {
