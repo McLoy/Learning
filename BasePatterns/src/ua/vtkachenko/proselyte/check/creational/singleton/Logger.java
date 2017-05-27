@@ -2,23 +2,23 @@ package ua.vtkachenko.proselyte.check.creational.singleton;
 
 public class Logger {
     private static Logger logger;
-    private static String text = "Start of logging...\n";
+    private static String log = "Start logging...\n";
+
+    private Logger() {
+    }
 
     public static synchronized Logger init(){
-        if (logger == null){
+        if (logger != null){
             logger = new Logger();
         }
         return logger;
     }
 
-    private Logger(){}
-
-    public static void add(String message){
-        text += "\n" + message;
+    public static void add(String message) {
+        log += "\n" + message;
     }
 
-    public static void show(){
-        System.out.println(text);
+    public static void showLog(){
+        System.out.println(log);
     }
-
 }
