@@ -18,6 +18,7 @@
     <module>LastMVC</module>
     <module>HabrMVCEx</module>
     <module>MVC</module>
+    <module>SpringSecApp</module>
   </modules>
   <packaging>pom</packaging>
 
