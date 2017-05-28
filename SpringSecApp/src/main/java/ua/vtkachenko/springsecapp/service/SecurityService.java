@@ -7,6 +7,8 @@ package ua.vtkachenko.springsecapp.service;
  * @version 1.0
  */
 public interface SecurityService {
+
     String findLoggedInUsername();
-    void autoligin(String username, String password);
+
+    void autoLogin(String username, String password);
 }
