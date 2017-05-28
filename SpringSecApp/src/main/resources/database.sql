@@ -33,3 +33,7 @@ INSERT INTO roles VALUES (1, 'ROLE_USER');
 INSERT INTO roles VALUES (2, 'ROLE_ADMIN');
 
 INSERT INTO user_roles VALUES (1, 2);
+
+# DROP TABLE user_roles;
+# DROP TABLE roles;
+# DROP TABLE users;
