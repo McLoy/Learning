@@ -19,6 +19,7 @@
     <module>HabrMVCEx</module>
     <module>MVC</module>
     <module>SpringSecApp</module>
+    <module>JerseyJAXRS</module>
   </modules>
   <packaging>pom</packaging>
 
