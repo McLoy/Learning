@@ -20,6 +20,7 @@
     <module>MVC</module>
     <module>SpringSecApp</module>
     <module>JerseyJAXRS</module>
+    <module>Spring/CoreContext/SpringCoreContext</module>
   </modules>
   <packaging>pom</packaging>
 
