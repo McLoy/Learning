@@ -21,6 +21,7 @@
     <module>SpringSecApp</module>
     <module>JerseyJAXRS</module>
     <module>Spring/CoreContext/SpringCoreContext</module>
+    <module>Spring/MVC/SpringMVCExample</module>
   </modules>
   <packaging>pom</packaging>
 

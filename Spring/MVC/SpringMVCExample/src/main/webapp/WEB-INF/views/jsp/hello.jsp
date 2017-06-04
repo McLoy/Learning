@@ -5,12 +5,12 @@
 <head>
     <title>Maven + Spring MVC</title>
 
-    <spring:url value="/resources/core/css/hello.css" var="coreCss" />
-    <spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" />
-    <link href="${bootstrapCss}" rel="stylesheet" />
-    <link href="${coreCss}" rel="stylesheet" />
+    <spring:url value="/resources/core/css/hello.css" var="coreCss"/>
+    <spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss"/>
+    <link href="${bootstrapCss}" rel="stylesheet"/>
+    <link href="${coreCss}" rel="stylesheet"/>
 </head>
-
+<body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -26,19 +26,14 @@
             <c:if test="${not empty name}">
                 Hello ${name}
             </c:if>
-
             <c:if test="${empty name}">
                 Welcome Welcome!
             </c:if>
-        </p>
-        <p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
         </p>
     </div>
 </div>
 
 <div class="container">
-
     <div class="row">
         <div class="col-md-4">
             <h2>Heading</h2>
@@ -65,16 +60,14 @@
 
     <hr>
     <footer>
-        <p>© Mkyong.com 2015</p>
+        <p>&copy; Vladyslav T 2017</p>
     </footer>
 </div>
-
-<spring:url value="/resources/core/css/hello.js" var="coreJs" />
-<spring:url value="/resources/core/css/bootstrap.min.js" var="bootstrapJs" />
+<spring:url value="/resources/core/css/hello.js" var="corejs"/>
+<spring:url value="/resources/core/css/bootstrap.min.js" var="bootstrapJs"/>
 
 <script src="${coreJs}"></script>
 <script src="${bootstrapJs}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
 </body>
 </html>

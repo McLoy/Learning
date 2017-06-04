@@ -1,5 +1,12 @@
 package web.controller;
 
+/**
+ * Main application controller
+ *
+ * @author Vladyslav T
+ * @version 1.0
+ */
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,22 +18,16 @@ import org.springframework.web.servlet.ModelAndView;
 public class HelloController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String printWelcome(ModelMap model) {
-
-        model.addAttribute("message", "Spring 3 MVC Hello World");
+    public String printWelcome(ModelMap model){
+        model.addAttribute("message", " Spring say hello man!");
         return "hello";
-
     }
 
     @RequestMapping(value = "/hello/{name:.+}", method = RequestMethod.GET)
-    public ModelAndView hello(@PathVariable("name") String name) {
-
+    public ModelAndView hello(@PathVariable("name") String name){
         ModelAndView model = new ModelAndView();
         model.setViewName("hello");
         model.addObject("msg", name);
-
         return model;
-
     }
-
 }
