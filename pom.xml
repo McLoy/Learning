@@ -22,6 +22,7 @@
     <module>JerseyJAXRS</module>
     <module>Spring/CoreContext/SpringCoreContext</module>
     <module>Spring/MVC/SpringMVCExample</module>
+    <module>Spring/MVC/Annotations</module>
   </modules>
   <packaging>pom</packaging>
 
