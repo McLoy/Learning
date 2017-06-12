@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>
+            jQuery Hello world
+        </title>
+    </head>
+    <script type="text/javascript" src="jquery-1.2.6.min.js"></script>
+    <body>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#msgid1").html("This is Hello world by jQuery 1");
+            });
+            $(function(){
+                $("#msgid2").html("This is Hello world by JQuery 2");
+            });
+            window.onload = function(){
+                document.getElementById('msgid3').innerHTML = "This is Hello world by JavaScript";
+            }
+        </script>
+        This is hello world by HTML
+        <div id="msgid1">
+
+        </div>
+        <div id="msgid2"></div>
+        <div id="msgid3"></div>
+    </body>
+</html>
