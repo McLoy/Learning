@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Refresh page in jQuery</title>
+        <script type="text/javascript" src="../jquery-1.4.2.min.js"></script>
+    </head>
+    <body>
+    <h1>Stop a page from exit with jQuery</h1>
+    <button id="reload">Refresh a Page in jQuery</button>
+
+    <script type="text/javascript">
+        $('#reload').click(function(){
+            location.reload();
+        });
+        $(window).bind('beforeunload', function(){
+            return 'Before you go \n We can see what need';
+        });
+    </script>
+    </body>
+</html>
