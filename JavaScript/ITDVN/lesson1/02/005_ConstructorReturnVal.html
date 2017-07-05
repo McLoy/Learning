@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Шаблон принудительного использования ключевого слова new</title>
+</head>
+<body>
+    <script>
+        function User(name){
+            if (!(this instanceof User)){
+                return new User(name);
+            }
+            this.name = name;
+        }
+
+        var a = new User("Ivan");
+        document.write(a.name);
+
+        var b = User("Ivan");
+        document.write("<br />b = " + b.name);
+        document.write("<br />window.name = " + window.name);
+
+
+    </script>
+</body>
+</html>

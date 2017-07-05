@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание  пользовательских конструкторов</title>
+</head>
+<body>
+    <script>
+        function User(name, age){
+            this.name = name;
+            this.age = age;
+            this.say = function(){
+                document.write("Hello! My name is " + this.name + ".");
+            }
+            this.info = function(){
+                document.write("Name: " + this.name + ", age: " + this.age);
+            }
+        }
+        var u = new User("Ivan", 20);
+        u.say();
+        u.info();
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example airplane prototype</title>
+</head>
+<body>
+    <script>
+        function Plane(name, capacity){
+            this.name = name;
+            this.capacity = capacity;
+        }
+        Plane.prototype.info = function(){
+            document.write(this.name + " can board " + this.capacity + " passengers <br />");
+        }
+        var p1 = new Plane("Boing", 280);
+        p1.info();
+        var p2 = new Plane("Mriya", 400);
+        p2.info();
+    </script>
+</body>
+</html>

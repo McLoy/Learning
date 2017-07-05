@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Использование прототипа</title>
+</head>
+<body>
+    <script>
+        function User(name){
+            this.name = name;
+        }
+
+        User.prototype.say = function(){
+            document.write("Hello! My name is " + this.name + ".");
+        }
+
+        var u = new User("Ivan");
+        u.say();
+        var u1 = new User("Ivan1");
+        u1.say();
+        var u2 = new User("Ivan2");
+        u2.say();
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пример конструктора и функции прототипа</title>
+</head>
+<body>
+    <script>
+        function Car(model, color) {
+            this.model = model;
+            this.color = color;
+        }
+        Car.prototype.info = function(){
+            document.write("Car: " + this.model + ", color: " + this.color + "<br />");
+        }
+        var bmw = new Car("BMW", "black");
+        bmw.info();
+        var audi = new Car("Audi", "silver");
+        audi.info();
+        var mersedes = new Car("Mersedes", "white");
+        mersedes.info();
+    </script>
+</body>
+</html>

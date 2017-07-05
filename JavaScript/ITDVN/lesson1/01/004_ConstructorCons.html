@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ObjectLiteral</title>
+</head>
+<body>
+    <script>
+        var obj = new Object();
+        console.log(obj.constructor === Object); //true
+
+        var obj = new Object(1);
+        console.log(obj.constructor === Number); //True
+        console.log(obj.toFixed(3));            //1.000
+
+        var obj = new Object("Hello world");
+        console.log(obj.constructor === String); //true
+
+        var obj = new Object(true);
+        console.log(obj.constructor === Boolean); //true
+
+    </script>
+</body>
+</html>

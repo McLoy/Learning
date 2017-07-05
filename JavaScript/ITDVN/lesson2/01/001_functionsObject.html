@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Функции - это объекты</title>
+</head>
+<body>
+    <script>
+        var add = new Function("x","y","return x + y");
+        var res = add(2,3);
+        document.write(res);
+    </script>
+</body>
+</html>

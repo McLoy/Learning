@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ObjectLiteral</title>
+</head>
+<body>
+    <script>
+        var user = {};
+
+        user.name = "admin";
+
+        user.getName = function(){
+            return user.name;
+        }
+
+        user.getName = function(){
+            return "anonymous";
+        }
+
+        user.newProperty = "Hello world";
+
+        delete user.newProperty;
+    </script>
+</body>
+</html>
