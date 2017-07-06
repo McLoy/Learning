@@ -23,6 +23,7 @@
     <module>Spring/CoreContext/SpringCoreContext</module>
     <module>Spring/MVC/SpringMVCExample</module>
     <module>Spring/MVC/Annotations</module>
+    <module>socialauth</module>
   </modules>
   <packaging>pom</packaging>
 
