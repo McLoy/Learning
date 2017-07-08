@@ -26,8 +26,11 @@
     <bean id="messageProvider" class="ua.vtkachenko.prospring4.ch3.xml.ConfigurableMessageProvider"
           c:message="My message yep"/>
     <bean id="constructorConfusion" class="ua.vtkachenko.prospring4.ch3.xml.ConstructorConfusion">
-        <constructor-arg>
+        <constructor-arg type="int">
             <value>90</value>
         </constructor-arg>
     </bean>
+
+    <bean id="injectSimple" class="ua.vtkachenko.prospring4.ch3.xml.InjectSimple"
+          p:name="Chris Schaefer" p:age="32" p:height="180" p:programmer="true" p:ageInSeconds="1009843200"/>
 </beans>
