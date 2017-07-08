@@ -1,5 +1,7 @@
 package ua.vtkachenko.prospring4.ch3;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * @author Vladyslav T
  * @version 1.0
@@ -14,6 +16,7 @@ public class StandardOutMessageRenderer implements MessageRenderer {
         System.out.println(messageProvider.getMessage());
     }
 
+    @Autowired
     public void setMessageProvider(MessageProvider provider) {
         this.messageProvider = provider;
     }
