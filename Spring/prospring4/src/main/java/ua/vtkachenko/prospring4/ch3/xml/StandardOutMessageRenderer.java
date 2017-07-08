@@ -1,4 +1,4 @@
-package ua.vtkachenko.prospring4.ch3.annotation;
+package ua.vtkachenko.prospring4.ch3.xml;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,6 @@ public class StandardOutMessageRenderer implements MessageRenderer {
         }
         System.out.println(messageProvider.getMessage());
     }
-
     @Autowired
     public void setMessageProvider(MessageProvider provider) {
         this.messageProvider = provider;
