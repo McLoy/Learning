@@ -23,14 +23,23 @@
     <!--<bean id="messageProvider" class="ua.vtkachenko.prospring4.ch3.xml.ConfigurableMessageProvider"-->
           <!--c:message="My message from c: constructor xml configuration file"/>-->
 
-    <bean id="messageProvider" class="ua.vtkachenko.prospring4.ch3.xml.ConfigurableMessageProvider"
-          c:message="My message yep"/>
-    <bean id="constructorConfusion" class="ua.vtkachenko.prospring4.ch3.xml.ConstructorConfusion">
-        <constructor-arg type="int">
-            <value>90</value>
-        </constructor-arg>
-    </bean>
+    <!--<bean id="messageProvider" class="ua.vtkachenko.prospring4.ch3.xml.ConfigurableMessageProvider"-->
+          <!--c:message="My message yep"/>-->
+    <!--<bean id="constructorConfusion" class="ua.vtkachenko.prospring4.ch3.xml.ConstructorConfusion">-->
+        <!--<constructor-arg type="int">-->
+            <!--<value>90</value>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
 
-    <bean id="injectSimple" class="ua.vtkachenko.prospring4.ch3.xml.InjectSimple"
-          p:name="Chris Schaefer" p:age="32" p:height="180" p:programmer="true" p:ageInSeconds="1009843200"/>
+    <!--<bean id="injectSimple" class="ua.vtkachenko.prospring4.ch3.xml.InjectSimple"-->
+          <!--p:name="Chris Schaefer" p:age="32" p:height="180" p:programmer="true" p:ageInSeconds="1009843200"/>-->
+
+    <bean id="oracle"
+          name="wiseworm" class="ua.vtkachenko.prospring4.ch3.BookwormOracle"/>
+
+    <bean id="injectRef" class="ua.vtkachenko.prospring4.ch3.xml.InjectRef">
+        <property name="oracle">
+            <ref local="oracle"/>
+        </property>
+    </bean>
 </beans>
