@@ -50,12 +50,45 @@
         <!--</property>-->
     <!--</bean>-->
 
-    <bean id="target1" class="ua.vtkachenko.prospring4.ch3.SimpleTarget" p:val-ref="injectBeanParent"/>
-    <bean id="target2" class="ua.vtkachenko.prospring4.ch3.SimpleTarget" p:val-ref="injectBean"/>
-    <bean id="target3" class="ua.vtkachenko.prospring4.ch3.SimpleTarget">
-        <property name="val">
-            <ref parent="injectBean"/>
+    <!--<bean id="target1" class="ua.vtkachenko.prospring4.ch3.SimpleTarget" p:val-ref="injectBeanParent"/>-->
+    <!--<bean id="target2" class="ua.vtkachenko.prospring4.ch3.SimpleTarget" p:val-ref="injectBean"/>-->
+    <!--<bean id="target3" class="ua.vtkachenko.prospring4.ch3.SimpleTarget">-->
+        <!--<property name="val">-->
+            <!--<ref parent="injectBean"/>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean id="injectBean" class="java.lang.String" c:_0="Child in Bean"/>-->
+
+    <bean id="oracle" name="wiseworm" class="ua.vtkachenko.prospring4.ch3.BookwormOracle"/>
+
+    <bean id="injectCollection" class="ua.vtkachenko.prospring4.ch3.xml.CollectionInjection">
+        <property name="map">
+            <map>
+                <entry key="someValue">
+                    <value>Hey!</value>
+                </entry>
+                <entry key="someBean">
+                    <ref bean="oracle"/>
+                </entry>
+            </map>
+        </property>
+        <property name="props">
+            <props>
+                <prop key="firstName">Cris</prop>
+                <prop key="secondName">Taker</prop>
+            </props>
+        </property>
+        <property name="set">
+            <set>
+                <value>Hello People!</value>
+                <ref bean="oracle"/>
+            </set>
+        </property>
+        <property name="list">
+            <list>
+                <value>Hello from List</value>
+                <ref bean="oracle"/>
+            </list>
         </property>
     </bean>
-    <bean id="injectBean" class="java.lang.String" c:_0="Child in Bean"/>
 </beans>

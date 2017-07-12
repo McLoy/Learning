@@ -8,7 +8,7 @@ public class SimpleTarget {
     private String val;
 
     public String getVal() {
-        return val;
+        return val + "\n";
     }
 
     public void setVal(String val) {
