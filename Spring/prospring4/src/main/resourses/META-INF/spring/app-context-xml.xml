@@ -109,6 +109,8 @@
     <!--</bean>-->
     <!--<bean id="standardTarget" class="ua.vtkachenko.prospring4.ch3.ReplacementTarget"/>-->
 
-    <bean id="name1" name="name2 name3,name4;name5" class="java.lang.String"/>
-    <alias name="name1" alias="name6"/>
+    <!--<bean id="name1" name="name2 name3,name4;name5" class="java.lang.String"/>-->
+    <!--<alias name="name1" alias="name6"/>-->
+
+    <bean id="nonSingleton" class="java.lang.String" scope="prototype" c:_0="Chris Taker"/>
 </beans>
