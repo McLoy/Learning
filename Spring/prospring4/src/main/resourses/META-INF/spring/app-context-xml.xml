@@ -114,10 +114,13 @@
 
     <!--<bean id="nonSingleton" class="java.lang.String" scope="prototype" c:_0="Chris Taker"/>-->
 
-    <bean id="foo" class="ua.vtkachenko.prospring4.ch3.Foo"/>
-    <bean id="bar1" class="ua.vtkachenko.prospring4.ch3.Bar"/>
-    <bean id="targetByName" autowire="byName" class="ua.vtkachenko.prospring4.ch3.xml.Target" lazy-init="true"/>
-    <bean id="targetByType" autowire="byType" class="ua.vtkachenko.prospring4.ch3.xml.Target" lazy-init="true"/>
-    <bean id="targetConstructor" autowire="constructor" class="ua.vtkachenko.prospring4.ch3.xml.Target"
-          lazy-init="true"/>
+    <!--<bean id="foo" class="ua.vtkachenko.prospring4.ch3.Foo"/>-->
+    <!--<bean id="bar1" class="ua.vtkachenko.prospring4.ch3.Bar"/>-->
+    <!--<bean id="targetByName" autowire="byName" class="ua.vtkachenko.prospring4.ch3.xml.Target" lazy-init="true"/>-->
+    <!--<bean id="targetByType" autowire="byType" class="ua.vtkachenko.prospring4.ch3.xml.Target" lazy-init="true"/>-->
+    <!--<bean id="targetConstructor" autowire="constructor" class="ua.vtkachenko.prospring4.ch3.xml.Target"-->
+          <!--lazy-init="true"/>-->
+
+    <bean id="inheritParent" class="ua.vtkachenko.prospring4.ch3.xml.SimpleBean" p:name="Chris Taker" p:age="32"/>
+    <bean id="inheritChild" class="ua.vtkachenko.prospring4.ch3.xml.SimpleBean" parent="inheritParent" p:age="33" p:name="Tolik"/>
 </beans>
