@@ -112,5 +112,12 @@
     <!--<bean id="name1" name="name2 name3,name4;name5" class="java.lang.String"/>-->
     <!--<alias name="name1" alias="name6"/>-->
 
-    <bean id="nonSingleton" class="java.lang.String" scope="prototype" c:_0="Chris Taker"/>
+    <!--<bean id="nonSingleton" class="java.lang.String" scope="prototype" c:_0="Chris Taker"/>-->
+
+    <bean id="foo" class="ua.vtkachenko.prospring4.ch3.Foo"/>
+    <bean id="bar1" class="ua.vtkachenko.prospring4.ch3.Bar"/>
+    <bean id="targetByName" autowire="byName" class="ua.vtkachenko.prospring4.ch3.xml.Target" lazy-init="true"/>
+    <bean id="targetByType" autowire="byType" class="ua.vtkachenko.prospring4.ch3.xml.Target" lazy-init="true"/>
+    <bean id="targetConstructor" autowire="constructor" class="ua.vtkachenko.prospring4.ch3.xml.Target"
+          lazy-init="true"/>
 </beans>
