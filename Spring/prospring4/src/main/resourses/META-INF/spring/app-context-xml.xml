@@ -128,8 +128,11 @@ default-lazy-init="true"
 
     <!--ch4-->
 
-    <bean id="simpleBean1" class="ua.vtkachenko.prospring4.ch4.SimpleBean" init-method="init" p:name="Chris Taker" p:age="32"/>
-    <bean id="simpleBean2" class="ua.vtkachenko.prospring4.ch4.SimpleBean" init-method="init" p:age="32"/>
-    <bean id="simpleBean3" class="ua.vtkachenko.prospring4.ch4.SimpleBean" init-method="init" p:name="Chris Taker"/>
+    <!--<bean id="simpleBean1" class="ua.vtkachenko.prospring4.ch4.SimpleBean" init-method="init" p:name="Chris Taker" p:age="32"/>-->
+    <!--<bean id="simpleBean2" class="ua.vtkachenko.prospring4.ch4.SimpleBean" init-method="init" p:age="32"/>-->
+    <!--<bean id="simpleBean3" class="ua.vtkachenko.prospring4.ch4.SimpleBean" init-method="init" p:name="Chris Taker"/>-->
 
+    <bean id="simpleBean1" class="ua.vtkachenko.prospring4.ch4.SimpleBeanWithInterface" p:name="Chris Taker" p:age="32"/>
+    <bean id="simpleBean2" class="ua.vtkachenko.prospring4.ch4.SimpleBeanWithInterface" p:age="32"/>
+    <bean id="simpleBean3" class="ua.vtkachenko.prospring4.ch4.SimpleBeanWithInterface" p:name="Chris Taker"/>
 </beans>
