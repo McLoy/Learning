@@ -36,10 +36,14 @@
 
     <!--ch4-->
 
+    <!--<context:annotation-config/>-->
+    <!--<bean id="simpleBean1" class="ua.vtkachenko.prospring4.ch4.SimpleBeanWithJSR250" p:name="Cris Raker" p:age="32"/>-->
+    <!--<bean id="simpleBean2" class="ua.vtkachenko.prospring4.ch4.SimpleBeanWithJSR250" p:age="32"/>-->
+    <!--<bean id="simpleBean3" class="ua.vtkachenko.prospring4.ch4.SimpleBeanWithJSR250" p:name="Cris Raker"/>-->
+
     <context:annotation-config/>
-    <bean id="simpleBean1" class="ua.vtkachenko.prospring4.ch4.SimpleBeanWithJSR250" p:name="Cris Raker" p:age="32"/>
-    <bean id="simpleBean2" class="ua.vtkachenko.prospring4.ch4.SimpleBeanWithJSR250" p:age="32"/>
-    <bean id="simpleBean3" class="ua.vtkachenko.prospring4.ch4.SimpleBeanWithJSR250" p:name="Cris Raker"/>
+    <bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBeanWithJSR250"
+          p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>
 
 
 </beans>
