@@ -4,6 +4,7 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 
 /**
