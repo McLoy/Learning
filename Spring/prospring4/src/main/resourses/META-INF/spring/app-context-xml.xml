@@ -139,6 +139,9 @@ default-lazy-init="true"
     <!--<bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBean" destroy-method="destroy"-->
           <!--p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>-->
 
-    <bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBeanWithInterface"
-          p:filePath = "#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>
+    <!--<bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBeanWithInterface"-->
+          <!--p:filePath = "#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>-->
+
+    <bean id="beanNamePrinter" class="ua.vtkachenko.prospring4.ch4.BeanNamePrinter"/>
+
 </beans>
