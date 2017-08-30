@@ -45,9 +45,13 @@
     <!--<bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBeanWithJSR250"-->
           <!--p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>-->
 
+    <!--<context:annotation-config/>-->
+    <!--<bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBeanWithInterfaceAnnotation"-->
+          <!--p:filePath="#{systemProperties['java.io.tmdir']}#{systemProperties['file.separator']}test.txt"/>-->
+
     <context:annotation-config/>
-    <bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBeanWithInterfaceAnnotation"
-          p:filePath="#{systemProperties['java.io.tmdir']}#{systemProperties['file.separator']}test.txt"/>
+    <bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBeanWithInterface2" p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>
+    <bean id="shutdownHook" class="ua.vtkachenko.prospring4.ch4.ShutDownHookBean"/>
 
 
 </beans>
