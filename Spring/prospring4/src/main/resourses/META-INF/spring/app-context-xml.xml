@@ -142,6 +142,10 @@ default-lazy-init="true"
     <!--<bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBeanWithInterface"-->
           <!--p:filePath = "#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>-->
 
-    <bean id="beanNamePrinter" class="ua.vtkachenko.prospring4.ch4.BeanNamePrinter"/>
+    <!--<bean id="beanNamePrinter" class="ua.vtkachenko.prospring4.ch4.BeanNamePrinter"/>-->
 
+    <bean id="shaDigest" class="ua.vtkachenko.prospring4.ch4.MessageDigestFactoryBean" p:algorithmName="SHA1"/>
+    <bean id="defaultDigest" class="ua.vtkachenko.prospring4.ch4.MessageDigestFactoryBean"/>
+    <bean id="digester" class="ua.vtkachenko.prospring4.ch4.MessageDigester" p:digest1-ref="shaDigest"
+          p:digest2-ref="defaultDigest"/>
 </beans>
