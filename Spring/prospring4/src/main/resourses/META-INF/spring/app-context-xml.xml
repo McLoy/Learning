@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:c="http://www.springframework.org/schema/c"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
-default-lazy-init="true"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+       default-lazy-init="true"
 >
 
     <!--<bean id="messageRenderer" class="ua.vtkachenko.prospring4.ch3.StandardOutMessageRenderer"/>-->
@@ -144,8 +144,47 @@ default-lazy-init="true"
 
     <!--<bean id="beanNamePrinter" class="ua.vtkachenko.prospring4.ch4.BeanNamePrinter"/>-->
 
-    <bean id="shaDigest" class="ua.vtkachenko.prospring4.ch4.MessageDigestFactoryBean" p:algorithmName="SHA1"/>
-    <bean id="defaultDigest" class="ua.vtkachenko.prospring4.ch4.MessageDigestFactoryBean"/>
-    <bean id="digester" class="ua.vtkachenko.prospring4.ch4.MessageDigester" p:digest1-ref="shaDigest"
-          p:digest2-ref="defaultDigest"/>
+    <!--<bean id="shaDigest" class="ua.vtkachenko.prospring4.ch4.MessageDigestFactoryBean" p:algorithmName="SHA1"/>-->
+    <!--<bean id="defaultDigest" class="ua.vtkachenko.prospring4.ch4.MessageDigestFactoryBean"/>-->
+    <!--<bean id="digester" class="ua.vtkachenko.prospring4.ch4.MessageDigester" p:digest1-ref="shaDigest"-->
+          <!--p:digest2-ref="defaultDigest"/>-->
+
+    <!--4.28-->
+    <bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer"
+          p:propertyEditorRegistrars-ref="propertyEditorRegistrarsList"/>
+    <util:list id="propertyEditorRegistrarsList">
+        <bean class="ua.vtkachenko.prospring4.ch4.PropertyEditorBean$CustomPropertyEditorRegistrar"/>
+    </util:list>
+
+    <!--<bean id="builtInSample" class="ua.vtkachenko.prospring4.ch4.PropertyEditorBean"-->
+          <!--p:bytes="Hello World"-->
+          <!--p:cls="java.lang.String"-->
+          <!--p:trueOrFalse="true"-->
+          <!--p:stringList-ref="stringList"-->
+          <!--p:stream="test.txt"-->
+          <!--p:floatValue="123.45678"-->
+          <!--p:date="05/03/13"-->
+          <!--p:file="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"-->
+          <!--p:locale="en_US"-->
+          <!--p:pattern="a*b"-->
+          <!--p:properties="name=Chris age=32"-->
+          <!--p:trimString="  String need strimming   "-->
+          <!--p:url="http://www.springframework.org"/>-->
+    <bean id="builtInSample" class="ua.vtkachenko.prospring4.ch4.PropertyEditorBean"
+          p:bytes="Hello World"
+          p:cls="java.lang.String"
+          p:trueOrFalse="true"
+          p:stringList-ref="stringList"
+          p:floatValue="123.45678"
+          p:date="05/03/13"
+          p:file="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"
+          p:locale="en_US"
+          p:pattern="a*b"
+          p:properties="name=Chris age=32"
+          p:trimString="  String need strimming   "
+          p:url="http://www.springframework.org"/>
+    <util:list id="stringList">
+        <value>String member1</value>
+        <value>String member2</value>
+    </util:list>
 </beans>
