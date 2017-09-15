@@ -150,18 +150,31 @@
           <!--p:digest2-ref="defaultDigest"/>-->
 
     <!--4.28-->
-    <bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer"
-          p:propertyEditorRegistrars-ref="propertyEditorRegistrarsList"/>
-    <util:list id="propertyEditorRegistrarsList">
-        <bean class="ua.vtkachenko.prospring4.ch4.PropertyEditorBean$CustomPropertyEditorRegistrar"/>
-    </util:list>
+    <!--<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer"-->
+          <!--p:propertyEditorRegistrars-ref="propertyEditorRegistrarsList"/>-->
+    <!--<util:list id="propertyEditorRegistrarsList">-->
+        <!--<bean class="ua.vtkachenko.prospring4.ch4.PropertyEditorBean$CustomPropertyEditorRegistrar"/>-->
+    <!--</util:list>-->
 
+    <!--&lt;!&ndash;<bean id="builtInSample" class="ua.vtkachenko.prospring4.ch4.PropertyEditorBean"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:bytes="Hello World"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:cls="java.lang.String"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:trueOrFalse="true"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:stringList-ref="stringList"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:stream="test.txt"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:floatValue="123.45678"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:date="05/03/13"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:file="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:locale="en_US"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:pattern="a*b"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:properties="name=Chris age=32"&ndash;&gt;-->
+          <!--&lt;!&ndash;p:trimString="  String need strimming   "&ndash;&gt;-->
+          <!--&lt;!&ndash;p:url="http://www.springframework.org"/>&ndash;&gt;-->
     <!--<bean id="builtInSample" class="ua.vtkachenko.prospring4.ch4.PropertyEditorBean"-->
           <!--p:bytes="Hello World"-->
           <!--p:cls="java.lang.String"-->
           <!--p:trueOrFalse="true"-->
           <!--p:stringList-ref="stringList"-->
-          <!--p:stream="test.txt"-->
           <!--p:floatValue="123.45678"-->
           <!--p:date="05/03/13"-->
           <!--p:file="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"-->
@@ -170,21 +183,21 @@
           <!--p:properties="name=Chris age=32"-->
           <!--p:trimString="  String need strimming   "-->
           <!--p:url="http://www.springframework.org"/>-->
-    <bean id="builtInSample" class="ua.vtkachenko.prospring4.ch4.PropertyEditorBean"
-          p:bytes="Hello World"
-          p:cls="java.lang.String"
-          p:trueOrFalse="true"
-          p:stringList-ref="stringList"
-          p:floatValue="123.45678"
-          p:date="05/03/13"
-          p:file="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"
-          p:locale="en_US"
-          p:pattern="a*b"
-          p:properties="name=Chris age=32"
-          p:trimString="  String need strimming   "
-          p:url="http://www.springframework.org"/>
-    <util:list id="stringList">
-        <value>String member1</value>
-        <value>String member2</value>
-    </util:list>
+    <!--<util:list id="stringList">-->
+        <!--<value>String member1</value>-->
+        <!--<value>String member2</value>-->
+    <!--</util:list>-->
+
+    <!--4.31-->
+    <bean name="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="ua.vtkachenko.prospring4.ch4.Name"
+                       value="ua.vtkachenko.prospring4.ch4.NamePropertyEditor"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="exampleBean" class="ua.vtkachenko.prospring4.ch4.CustomEditorExample"
+          p:name="Chris Shaefer"/>
+
 </beans>
