@@ -188,16 +188,24 @@
         <!--<value>String member2</value>-->
     <!--</util:list>-->
 
-    <!--4.31-->
-    <bean name="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
-        <property name="customEditors">
-            <map>
-                <entry key="ua.vtkachenko.prospring4.ch4.Name"
-                       value="ua.vtkachenko.prospring4.ch4.NamePropertyEditor"/>
-            </map>
-        </property>
-    </bean>
-    <bean id="exampleBean" class="ua.vtkachenko.prospring4.ch4.CustomEditorExample"
-          p:name="Chris Shaefer"/>
+    <!--&lt;!&ndash;4.31&ndash;&gt;-->
+    <!--<bean name="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">-->
+        <!--<property name="customEditors">-->
+            <!--<map>-->
+                <!--<entry key="ua.vtkachenko.prospring4.ch4.Name"-->
+                       <!--value="ua.vtkachenko.prospring4.ch4.NamePropertyEditor"/>-->
+            <!--</map>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean id="exampleBean" class="ua.vtkachenko.prospring4.ch4.CustomEditorExample"-->
+          <!--p:name="Chris Shaefer"/>-->
+
+    <!--4.34-->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+          p:basenames-ref="basenames"/>
+    <util:list id="basenames">
+        <value>buttons</value>
+        <value>labels</value>
+    </util:list>
 
 </beans>
