@@ -200,12 +200,16 @@
     <!--<bean id="exampleBean" class="ua.vtkachenko.prospring4.ch4.CustomEditorExample"-->
           <!--p:name="Chris Shaefer"/>-->
 
-    <!--4.34-->
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-          p:basenames-ref="basenames"/>
-    <util:list id="basenames">
-        <value>buttons</value>
-        <value>labels</value>
-    </util:list>
+    <!--&lt;!&ndash;4.34&ndash;&gt;-->
+    <!--<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"-->
+          <!--p:basenames-ref="basenames"/>-->
+    <!--<util:list id="basenames">-->
+        <!--<value>buttons</value>-->
+        <!--<value>labels</value>-->
+    <!--</util:list>-->
+
+    <!--4.40-->
+    <bean id="publisher" class="ua.vtkachenko.prospring4.ch4.Publisher"/>
+    <bean id="messageEventListener" class="ua.vtkachenko.prospring4.ch4.MessageEventListener"/>
 
 </beans>
