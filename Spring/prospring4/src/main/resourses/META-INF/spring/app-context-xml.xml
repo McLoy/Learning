@@ -209,7 +209,13 @@
     <!--</util:list>-->
 
     <!--4.40-->
-    <bean id="publisher" class="ua.vtkachenko.prospring4.ch4.Publisher"/>
-    <bean id="messageEventListener" class="ua.vtkachenko.prospring4.ch4.MessageEventListener"/>
+    <!--<bean id="publisher" class="ua.vtkachenko.prospring4.ch4.Publisher"/>-->
+    <!--<bean id="messageEventListener" class="ua.vtkachenko.prospring4.ch4.MessageEventListener"/>-->
+
+    <!--4.44 ch4.JavaConfigs.JavaConfigXMLExample-->
+    <bean id="messageRenderer" class="ua.vtkachenko.prospring4.ch4.JavaConfigs.StandardOutMessageRenderer"
+          p:messageProvider-ref="messageProvider"/>
+    <bean id="messageProvider" class="ua.vtkachenko.prospring4.ch4.JavaConfigs.ConfigurableMessageProvider"
+          c:message="This is a configurable message"/>
 
 </beans>
