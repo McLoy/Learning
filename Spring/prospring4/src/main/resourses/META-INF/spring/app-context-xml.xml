@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c" xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
        default-lazy-init="true"
 >
 
@@ -213,9 +214,19 @@
     <!--<bean id="messageEventListener" class="ua.vtkachenko.prospring4.ch4.MessageEventListener"/>-->
 
     <!--4.44 ch4.JavaConfigs.JavaConfigXMLExample-->
-    <bean id="messageRenderer" class="ua.vtkachenko.prospring4.ch4.JavaConfigs.StandardOutMessageRenderer"
-          p:messageProvider-ref="messageProvider"/>
-    <bean id="messageProvider" class="ua.vtkachenko.prospring4.ch4.JavaConfigs.ConfigurableMessageProvider"
-          c:message="This is a configurable message"/>
+    <!--<bean id="messageRenderer" class="ua.vtkachenko.prospring4.ch4.JavaConfigs.StandardOutMessageRenderer"-->
+          <!--p:messageProvider-ref="messageProvider"/>-->
+    <!--<bean id="messageProvider" class="ua.vtkachenko.prospring4.ch4.JavaConfigs.ConfigurableMessageProvider"-->
+          <!--c:message="This is a configurable message"/>-->
+
+    <!--4.60 ch4.Environment.PlaceHolderSample -->
+    <!--<context:property-placeholder location="classpath:application.properties"/>-->
+    <context:property-placeholder local-override="true" location="classpath:application.properties"/>
+    <!--//Чтоб заставить-->
+    <!--//Spring назначить более высокий приоритет значениям из файла application.properties-->
+    <bean id="appProperty" class="ua.vtkachenko.prospring4.ch4.Environment.AppProperty">
+        <property name="applicationHome" value="${application.home}"/>
+        <property name="userHome" value="${user.home}"></property>
+    </bean>
 
 </beans>
