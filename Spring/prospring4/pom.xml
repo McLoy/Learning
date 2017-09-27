@@ -44,5 +44,10 @@
       <artifactId>spring-tx</artifactId>
       <version>${spring.version}</version>
     </dependency>
+    <dependency>
+      <groupId>javax.inject</groupId> <!--for 4.62-->
+        <artifactId>javax.inject</artifactId>
+        <version>1</version>
+    </dependency>
   </dependencies>
 </project>

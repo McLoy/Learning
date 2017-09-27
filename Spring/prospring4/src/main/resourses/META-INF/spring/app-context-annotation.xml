@@ -49,9 +49,15 @@
     <!--<bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBeanWithInterfaceAnnotation"-->
           <!--p:filePath="#{systemProperties['java.io.tmdir']}#{systemProperties['file.separator']}test.txt"/>-->
 
-    <context:annotation-config/>
-    <bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBeanWithInterface2" p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>
-    <bean id="shutdownHook" class="ua.vtkachenko.prospring4.ch4.ShutDownHookBean"/>
+    <!--<context:annotation-config/>-->
+    <!--<bean id="destructiveBean" class="ua.vtkachenko.prospring4.ch4.DestructiveBeanWithInterface2" p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>-->
+    <!--<bean id="shutdownHook" class="ua.vtkachenko.prospring4.ch4.ShutDownHookBean"/>-->
+
+    <!--4.65-->
+    <context:component-scan base-package="ua.vtkachenko.prospring4.ch4.AnnotationJSR330"/>
+    <bean id="message" class="java.lang.String">
+        <constructor-arg value="You are runing JSR-330"/>
+    </bean>
 
 
 </beans>
