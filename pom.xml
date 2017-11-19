@@ -24,6 +24,7 @@
     <module>Spring/MVC/SpringMVCExample</module>
     <module>Spring/MVC/Annotations</module>
     <module>socialauth</module>
+      <module>Logger</module>
   </modules>
   <packaging>pom</packaging>
 
